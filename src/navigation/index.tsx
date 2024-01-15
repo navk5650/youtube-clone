@@ -7,7 +7,6 @@ import FaBrand from 'react-native-vector-icons/FontAwesome6';
 import Home from '../components/Home';
 import {Text, View} from 'react-native';
 import Setting from '../components/Setting';
-import Shorts from '../components/Shorts';
 
 const Tab = createBottomTabNavigator();
 
@@ -15,9 +14,9 @@ const HomeIcon = ({color, size}: {color: string; size: number}) => {
   return <MaterialCommunityIcons name="home" color={color} size={size} />;
 };
 
-const ShortsIcon = ({color, size}: {color: string; size: number}) => {
-  return <FaBrand name="squarespace" color={color} size={size} />;
-};
+// const ShortsIcon = ({color, size}: {color: string; size: number}) => {
+//   return <FaBrand name="squarespace" color={color} size={size} />;
+// };
 
 const ProfileIcon = ({color, size}: {color: string; size: number}) => {
   return (
@@ -42,7 +41,7 @@ const youtubeHeader = (props: HeaderTitleProps) => {
       <Text
         allowFontScaling={allowFontScaling}
         style={{
-          color: tintColor,
+          color: '#000',
           fontWeight: '500',
           fontSize: 18,
           paddingLeft: 5,

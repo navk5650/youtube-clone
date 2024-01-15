@@ -20,7 +20,9 @@ const Setting = () => {
   const {colors} = useTheme();
 
   const addUrl = (link: string) => {
-    if (link.trim() === '') return link;
+    if (link.trim() === '') {
+      return link;
+    }
     if (isValidURL(link)) {
       addLink(link);
       setInputText('');
@@ -77,12 +79,18 @@ const Setting = () => {
             backgroundColor: '#fff',
           }}>
           <View style={{flex: 1}}>
-            <Text style={isDeleted ? Style.deleted : null} numberOfLines={1}>
+            <Text
+              style={[
+                isDeleted ? Style.deleted : null,
+                {color: '#000', textDecorationColor: '#fff000'},
+              ]}
+              numberOfLines={1}>
               {item}
             </Text>
           </View>
           <View style={{marginLeft: 11}}>
             <Entypo
+              color={'#000'}
               name={isDeleted ? 'ccw' : 'circle-with-cross'}
               onPress={() => removeLink(item)}
               size={24}
@@ -95,36 +103,33 @@ const Setting = () => {
   );
 
   return (
-    <View>
+    <View style={{flex: 1}}>
       <View style={Style.container}>
         <TextInput
           multiline
           placeholder="Enter YouTube URLs (one per line)"
           value={inputText}
+          placeholderTextColor={'gray'}
           onChangeText={text => setInputText(text)}
           style={Style.multiline}
         />
+        <Button title="Add URL" onPress={handleAddUrl} />
       </View>
-      <Button title="Add URL" onPress={handleAddUrl} />
-      <View style={Style.list}>
-        <FlashList
-          extraData={urlToRemove}
-          keyExtractor={item => item?.toString()}
-          data={youtubeLinks}
-          renderItem={renderItem}
-          estimatedItemSize={200}
-        />
+      <View style={{height: 25}} />
+      <View style={{flex: 9}}>
+        <View style={{height: '100%'}}>
+          <FlashList
+            extraData={urlToRemove}
+            keyExtractor={item => item?.toString()}
+            data={youtubeLinks}
+            renderItem={renderItem}
+            estimatedItemSize={200}
+          />
+        </View>
+      </View>
+      <View style={{flex: 1}}>
         {urlToRemove.length ? (
-          <View
-            style={{
-              flexGrow: 1,
-              justifyContent: 'space-around',
-              flexDirection: 'row',
-              backgroundColor: 'white',
-              shadowColor: '#000',
-              shadowOpacity: 0.2,
-              shadowOffset: {height: -2, width: 2},
-            }}>
+          <View style={Style.bottom}>
             <Button onPress={updateRemovedLinks} title="Update" />
             <Button
               onPress={() => setUrlToRemove([])}
@@ -151,14 +156,26 @@ const Style = StyleSheet.create({
   },
   multiline: {
     marginTop: 11,
+    color: '#000',
     height: 150,
     borderColor: 'gray',
     borderRadius: 5,
     borderWidth: 1,
     marginBottom: 10,
     padding: 10,
+    alignItems: 'center',
+    textAlign: 'left',
   },
-  list: {
-    height: '100%',
+  bottom: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    justifyContent: 'space-around',
+    paddingVertical: 5,
+    flexDirection: 'row',
+    backgroundColor: 'white',
+    shadowColor: '#000',
+    shadowOpacity: 0.2,
+    shadowOffset: {height: -2, width: 2},
   },
 });
