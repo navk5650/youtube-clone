@@ -1,8 +1,22 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# YouTube Clone React Native App
 
-# Getting Started
+This React Native application serves as a YouTube clone, allowing users to input YouTube links in the settings tab. The videos from these links will be played on the home tab. Please ensure that the provided links are from YouTube only.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+## Getting Started
+
+Follow the steps below to set up and run the project on your local machine.
+
+### Prerequisites
+
+Make sure you have Node.js, npm, or Yarn installed on your machine. You should also have the React Native development environment set up.
+
+### Installation
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone <repository_url>
+   ```
 
 ## Step 1: Start the Metro Server
 
